@@ -1,0 +1,352 @@
+<!DOCTYPE html> 
+<html>
+<head>
+	<title>Single page template</title> 
+	<meta http-equiv="content-type" content="text/html;" charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel=StyleSheet href="css/font-awesome.min.css" type="text/css" />
+	<link rel=StyleSheet href="css/reset.css" type="text/css" />
+	<link rel=StyleSheet href="css/style.css" type="text/css" />
+	<link rel=StyleSheet href="css/jqplot/jquery.jqplot.css" type="text/css" />
+	<script src="js/jquery-2.0.3.min.js"></script>
+	<!-- <script src="js/jquery.mobile-1.4.0-rc.1.min.js"></script> -->
+	<script type="text/javascript" src="js/jqplot/jquery.jqplot.min.js"></script>
+	<script type="text/javascript" src="js/jqplot/jqplot.barRenderer.min.js"></script>
+	<script type="text/javascript" src="js/jqplot/jqplot.categoryAxisRenderer.min.js"></script>
+	<script type="text/javascript" src="js/jqplot/jqplot.pointLabels.min.js"></script>
+	
+</head> 
+<body>     
+<div  id="data">
+<div class="header">
+	<a href="cal_building_3.html"  ><img alt="" src="img/header/header-cal-building.png" ></a>
+</div>
+<div class="container2" >
+  <div class="helper">
+  		<div><img alt="" src="img/content/cal_building_3_1.png" width="100%"></div>
+    	<div class="content">
+			<div id="cal_building_3_1_1" ><div><img src="img/submenu/submenu-cal-building-3-1_01.png"  class="submenu_img"/></div><div><span  id="input1" class="input_text"></span></div></div>
+			<div id="cal_building_3_1_2"><div><img src="img/submenu/submenu-cal-building-3-1_02.png"  class="submenu_img"/></div><div><span  id="input2" class="input_text"></span></div></div>
+			<div id="cal_building_3_1_3"><div><img src="img/submenu/submenu-cal-building-3-1_03.png"  class="submenu_img"/></div><div><span  id="input3" class="input_text"></span></div></div>
+			<div id="cal_building_3_1_4"><div><img src="img/submenu/submenu-cal-building-3-1_04.png"  class="submenu_img"/></div><div><span  id="input4" class="input_text"></span></div></div>
+			<div id="cal_building_3_1_5"><div><img src="img/submenu/submenu-cal-building-3-1_05.png"  class="submenu_img"/></div><div><span  id="input5" class="input_text"></span></div></div>
+			<div id="cal_building_3_1_6"><div><img src="img/submenu/submenu-cal-building-3-1_06.png"  class="submenu_img"/></div><div><span  id="input6" class="input_text"></span></div></div>
+			<div id="cal_building_3_1_7"><div><img src="img/submenu/submenu-cal-building-3-1_07.png"  class="submenu_img"/></div><div><span  id="input7" class="input_text"></span></div></div>
+			<div id="cal_building_3_1_8"><div><img src="img/submenu/submenu-cal-building-3-1_08.png"  class="submenu_img"/></div><div><span  id="input8" class="input_text"></span></div></div>
+			<div><img src="img/line.png"  class="submenu_img"/></div>
+			<div align="center" style="padding-top: 20px;padding-bottom: 30px;"><img id="button-cal"  alt="calculate" src="img/btn-cal.png"  width="100px"/> </div>
+			
+		</div>
+	</div>
+</div>
+</div>
+<div  id="graph" style="display: none" >
+<div class="header">
+	<a href="#" id="head-graph"><img alt="" src="img/header/header-cal-building.png" ></a>
+</div>
+<div class="container2">
+  <div class="helper">
+  		<div><img alt="" src="img/content/cal_building_3_1.png" width="100%"></div>
+    	<div class="content" id="graph" style="text-align: center;padding-bottom: 30px;" >
+			<div><img alt="" src="img/cal-graph-yaxis.png" width="100%"></div>
+			<div id="chart1" style="width:100%;"></div>
+			<div><img alt="" src="img/cal-graph-xaxis.png" width="100%"></div>
+		</div>
+	</div>
+</div>
+</div>
+<script type="text/javascript">
+$(function () {
+	try{
+		var input1 = 0 ;
+		var input2 = 0 ;
+		var input3 = 0 ;
+		var input4 = 0 ;
+		var input5 = 0 ;
+		var input6 = 118.39 ;
+		var input7 = 0 ;
+		var input8 = 0 ;
+		
+		/*
+		var unit1 = ' kWh/ปี' ;
+		var unit2 = ' kW' ;
+		var unit3 = ' m<sup>2</sup>' ;
+		var unit4 = ' kgCO<sub>2</sub>e/ปี-m<sup>2</sup>';
+		var unit5 = ' kgCO<sub>2</sub>e/ปี-m<sup>2</sup>' ;
+		var unit6 = ' kgCO<sub>2</sub>e/ปี-m<sup>2</sup>' ;
+		var unit7 = ' %' ;
+		var unit8 = ' %' ;
+		*/
+		var unit1 = 'img/unit/unit-building-1.png' ;
+		var unit2 = 'img/unit/unit-building-2.png' ;
+		var unit3 = 'img/unit/unit-building-3.png' ;
+		var unit4 = 'img/unit/unit-building-4.png' ;
+		var unit5 = 'img/unit/unit-building-5.png' ;
+		var unit6 = 'img/unit/unit-building-6.png' ;
+		var unit7 = 'img/unit/unit-building-7.png' ;
+		var unit8 = 'img/unit/unit-building-8.png' ;
+		
+		var unit1Img = ' <img src=\''+unit1+'\' height=\'20px\' style=\'vertical-align:middle\' />' ;
+		var unit2Img = ' <img src=\''+unit2+'\' height=\'20px\' style=\'vertical-align:middle\' />' ;
+		var unit3Img = ' <img src=\''+unit3+'\' height=\'20px\' style=\'vertical-align:middle\' />' ;
+		var unit4Img = ' <img src=\''+unit4+'\' height=\'20px\' style=\'vertical-align:middle\' />' ;
+		var unit5Img = ' <img src=\''+unit5+'\' height=\'20px\' style=\'vertical-align:middle\' />' ;
+		var unit6Img = ' <img src=\''+unit6+'\' height=\'20px\' style=\'vertical-align:middle\' />' ;
+		var unit7Img = ' <img src=\''+unit7+'\' height=\'20px\' style=\'vertical-align:middle\' />' ;
+		var unit8Img = ' <img src=\''+unit8+'\' height=\'20px\' style=\'vertical-align:middle\' />' ;
+		
+		var input1Container  = $("#input1") ;
+		input1Container.html((input1>0?""+input1:"") + unit1Img) ;
+		
+		var input2Container  = $("#input2") ;
+		input2Container.html((input2>0?""+input2:"") + unit2Img) ;
+		
+		var input3Container  = $("#input3") ;
+		input3Container.html((input3>0?""+input3:"") + unit3Img) ;
+		
+		var input4Container  = $("#input4") ;
+		input4Container.html((input4>0?""+input4:"") + unit4Img) ;
+		
+		var input5Container  = $("#input5") ;
+		input5Container.html((input5>0?""+input5:"") + unit5Img) ;
+		
+		var input6Container  = $("#input6") ;
+		input6Container.html((input6>0?""+input6:"") + unit6Img) ;
+		
+		var input7Container  = $("#input7") ;
+		input7Container.html((input7>0?""+input7:"") + unit7Img) ;
+		
+		var input8Container  = $("#input8") ;
+		input8Container.html((input8>0?""+input8:"") + unit8Img) ;
+		
+		
+		
+		
+		function setPayment1(){
+		    //var x ;
+		    var value = prompt('อาคารของท่านมีการซื้อไฟฟ้าจากภายนอกเท่าไหร่:'+unit1,""+ (input1>0?input1:""));
+		    if (value!=null){
+    			input1 = value ;
+		    	input1Container.empty();
+		    	input1Container.html(input1 + unit1Img ) ;
+		    	calculate();		   	
+		    }
+		    
+		    
+		}
+		
+		function setPayment2(){
+		    //var x ;
+		    var value = prompt('อาคารของท่านติดตั้งโซล่าร์เซลล์สำหรับผลิตพลังงานไฟฟ้าใช้เอง:'+unit2,""+(input2>0?input2:""));
+		    if (value!=null){
+    			input2 = value ;
+		    	input2Container.empty();
+		    	input2Container.html(input2 +  unit2Img ) ;
+		    	calculate();
+		   	}
+		    
+		}
+		
+		function setPayment3(){
+		    //var x ;
+		    var value = prompt('อาคารของท่านมีพื้นที่เท่าไหร่:'+unit3,""+(input3>0?input3:""));
+		    if (value!=null){
+    			input3 = value ;
+		    	input3Container.empty();
+		    	input3Container.html(input3 +  unit3Img) ;
+		    	calculate();
+		   	}
+		    
+		}
+		
+		
+		function setPayment4(){
+		    //var x ;
+		    var value = prompt('อาคารของท่านปล่อยก๊าซเรือนกระจก จากการซื้อใช้ไฟฟ้าจากแหล่งภายนนอก:'+unit4,""+(input4>0?input4:""));
+		    if (value!=null){
+    			input4 = value ;
+		    	input4Container.empty();
+		    	input4Container.html(input4 +  unit4Img) ;
+		   	}
+		    
+		}
+		
+		
+		function setPayment5(){
+		    //var x ;
+		    var value = prompt('อาคารของท่านลดก๊าซเรือนกระจก จากการผลิตไฟฟ้าใช้เอง:'+unit5,""+(input5>0?input5:""));
+		    if (value!=null){
+    			input5 = value ;
+		    	input5Container.empty();
+		    	input5Container.html(input5 +  unit5Img) ;
+		   	}
+		    
+		}
+		
+		function setPayment6(){
+		    //var x ;
+		    var value = prompt('(อาคารสำนักงาน) โดยทั่วไปมีการปล่อยก๊าซเรือนกระจกสุทธิ:'+unit6,""+(input6>0?input6:""));
+		    if (value!=null){
+    			input6 = value ;
+		    	input6Container.empty();
+		    	input6Container.html(input6 +  unit6Img) ;
+		   	}
+		    
+		}
+		
+		function setPayment7(){
+		    //var x ;
+		    var value = prompt('% การเข้าสู่ Zero Carbon original Design เทียบกับอาคารทั่วไป:'+unit7,""+(input7>0?input7:""));
+		    if (value!=null){
+    			input7 = value ;
+		    	input7Container.empty();
+		    	input7Container.html(input7 +  unit7Img) ;
+		   	}
+		    
+		}
+		
+		function setPayment8(){
+		    //var x ;
+		    var value = prompt('% การเข้าสู่ Zero Carbon สภาพปัจจุบันเทียบกับอาคารทั่วไป:'+unit8,""+(input8>0?input8:""));
+		    if (value!=null){
+    			input8 = value ;
+		    	input8Container.empty();
+		    	input8Container.html(input8 +  unit8Img) ;
+		    }
+		}
+		
+		function calculate() {
+			if(input1 != 0 && input2 != 0 && input3 != 0){
+				try{
+					input4 = ( input1 * 0.5610) / input3 ;
+				}catch(e){}
+				try{
+					input5 = ( input2 * 4.5 * 365 * 0.5610) / input3 ;	
+				}catch(e){}
+				try{
+					input7 = (( input4 + input5 ) / input6 ) * 100 ;
+				}catch(e){}
+				try{
+					input8 = (( input4 ) / input6 ) * 100 ;
+				}catch(e){}
+					
+				var num4 = new Number(input4);
+				var num5 = new Number(input5);
+				var num7 = new Number(input7);
+				var num8 = new Number(input8);
+				
+				input4 = num4.toFixed(2) ;
+				input5 = num5.toFixed(2) ;
+				input7 = num7.toFixed(2) ;
+				input8 = num8.toFixed(2) ;
+				
+				
+				input4Container.empty();
+		    	input4Container.html(input4 +  unit4Img) ;
+		    	
+		    	input5Container.empty();
+		    	input5Container.html(input5 +  unit5Img) ;
+		    	
+		    	input6Container.empty();
+		    	input6Container.html(input6 +  unit6Img) ;
+		    	
+		    	input7Container.empty();
+		    	input7Container.html(input7 +  unit7Img) ;
+		    	
+		    	input8Container.empty();
+		    	input8Container.html(input8 +  unit8Img) ;
+			}
+		}
+
+	    function plotGraph() {
+	    	$("#data").hide();
+	    	$("#graph").show();
+
+	    	 $.jqplot.config.enablePlugins = true;
+	         var s1 = [ 0,input6 , input7 , input8 ,0];
+	         var ticks = ['','อาคารทั่วไป', 'Original Design', 'ปัจจุบัน' ,''];
+	          
+	         plot1 = $.jqplot('chart1', [s1], {
+	             // Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+	             animate: !$.jqplot.use_excanvas,
+	             seriesColors:['#FFFFFF', '#88BFE8', '#DA296C', '#95B839', '#FFFFFF'],
+	             seriesDefaults:{
+	                 renderer:$.jqplot.BarRenderer,
+	                 rendererOptions:{ 
+	                	 highlightMouseOver : false ,
+	                	 varyBarColor : true,
+	                	 fillToZero: true ,
+	                	 barPadding: 8,      // number of pixels between adjacent bars in the same
+                         // group (same category or bin).
+					     barMargin: 0,      // number of pixels between adjacent groups of bars.
+					     barDirection: 'vertical', // vertical or horizontal.
+					     barWidth: null,     // width of the bars.  null to calculate automatically.
+					     shadowOffset: 0,    // offset from the bar edge to stroke the shadow.
+					     shadowDepth: 0,     // nuber of strokes to make for the shadow.
+					     shadowAlpha: 0,   // transparency of the shadow.
+	                },
+	                 pointLabels: { show: false }
+	             },
+	            axes: {
+	                 xaxis: {
+	                     renderer: $.jqplot.CategoryAxisRenderer,
+	                     ticks: ticks ,
+	                     showTicks: false,
+	                 },
+	                 
+	                 yaxis:{
+	                   /*pad: 1.2,*/
+	                   tickOptions:{ 
+	                	   formatString:'%d', 
+	                	   textColor : '#95B839' ,
+	                   },
+	                   autoscale:true,   
+	         
+	                   
+	                 }
+	             },
+	             highlighter: { show: false } ,
+	             
+
+       	        grid: {
+       	            backgroundColor: '#FFFFFF',
+	       	        gridLineColor: 'rgba(133, 192, 53, 0.4)' ,
+	                gridLineWidth: 0.5,
+	                borderColor: '#95B839' ,
+	                drawBorder : true ,
+	                shadow: false,   
+	                borderWidth: 1, 
+       	        },
+				
+	           	
+	         });
+	    }
+	    
+	    
+	    function reCalculate(){
+	    	
+	    	$("#graph").hide();
+	    	$("#data").show();
+
+	    }
+	    
+	    $("#cal_building_3_1_1").on('click', setPayment1);
+		$("#cal_building_3_1_2").on('click', setPayment2);
+		$("#cal_building_3_1_3").on('click', setPayment3);
+		//$("#cal_building_3_1_4").on('click', setPayment4);
+		//$("#cal_building_3_1_5").on('click', setPayment5);
+		//$("#cal_building_3_1_6").on('click', setPayment6);
+		//$("#cal_building_3_1_7").on('click', setPayment7);
+		//$("#cal_building_3_1_8").on('click', setPayment8);
+		$("#button-cal").on('click', plotGraph );
+		$("#head-graph").on('click', reCalculate );
+		
+	}catch(e){
+		alert('Error:'+e.message) ;
+	}
+	
+
+});
+</script>
+</body>
+</html>
